@@ -1,0 +1,151 @@
+body{
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Fondo del área de juego */
+#gameArea {
+    width: 100vw;
+    height: 70vh;
+    border: 2px solid #EE1C25; /* Rojo BAC */
+    overflow: hidden;
+    background-color: #FFFFFF; /* Blanco */
+    position: relative;
+    
+}
+
+/* Estilo del personaje */
+#player {
+    width: 12vw;
+    max-width: 50px;
+    height: 12vw;
+    max-height: 50px;
+    background-color: transparent; /* Hacemos transparente el fondo */
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-image: url('logo-small.png');
+    background-size: contain; /* Ajusta el tamaño del fondo para que quepa en el contenedor */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-position: center; /* Centra la imagen dentro del contenedor */
+}
+
+/* Opciones de respuesta */
+.option {
+    
+    background-color: #EE1C25; /* Rojo BAC */
+    position: absolute;
+    top: 10%;
+    font-size: 1.5rem;
+    color: #FFFFFF; /* Blanco */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid #A7A8AA; /* Gris claro */
+
+    /* Nuevas propiedades para ajuste de texto */
+    max-width: 150px; /* Limita el ancho del contenedor */
+    white-space: normal; /* Permite el ajuste de línea */
+    word-wrap: break-word; /* Permite romper palabras largas */
+    text-align: center; /* Centra el texto dentro del contenedor */
+}
+
+/* Si es necesario, ajusta la posición de las opciones */
+#option1 {
+    left: 40%; /* Ajusta según tus necesidades */
+    transform: translateX(-50%);
+}
+
+#option2 {
+    left: 60%; /* Ajusta según tus necesidades */
+    transform: translateX(-50%);
+}
+
+/* Pregunta */
+#question {
+    font-size: 1.75rem;
+    color: #4B4B4D; /* Gris oscuro */
+    margin: 20px 0;
+    text-align: center;
+}
+
+/* Puntuación y Vidas abajo */
+#statusContainer {
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 10vh;
+    background-color: #EE1C25; /* Rojo BAC */
+    color: #FFFFFF; /* Blanco */
+    border-top: 1px solid #A7A8AA; /* Gris claro */
+}
+
+#lives, #score {
+    font-size: 1.25rem;
+}
+
+#pauseButton, #resumeButton {
+    font-size: 1.25rem;
+    padding: 10px;
+    background-color: #4B4B4D; /* Gris oscuro */
+    color: #FFFFFF; /* Blanco */
+    border: none;
+    border-radius: 5px;
+}
+
+#pauseButton:hover, #resumeButton:hover {
+    background-color: #A7A8AA; /* Gris claro */
+}
+
+/* Efectos de animación */
+.vibrate {
+    animation: vibrate 0.3s linear;
+}
+
+.btn {
+    background-color: #EE1C25; /* Rojo BAC */
+    color: #FFFFFF; /* Blanco */
+    border: none;
+}
+
+.btn:hover {
+    background-color: #A7A8AA; /* Gris claro */
+}
+
+
+@keyframes vibrate {
+    0% { transform: translate(0px, 0px); }
+    25% { transform: translate(2px, -2px); }
+    50% { transform: translate(-2px, 2px); }
+    75% { transform: translate(2px, 2px); }
+    100% { transform: translate(0px, 0px); }
+}
+
+/* Efecto de salto */
+.jump {
+    animation: jump 0.5s ease;
+}
+
+@keyframes jump {
+    0% { bottom: 10px; }
+    50% { bottom: 100px; }
+    100% { bottom: 10px; }
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 600px) {
+    #option1 {
+        left: 10%;
+    }
+    #option2 {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+

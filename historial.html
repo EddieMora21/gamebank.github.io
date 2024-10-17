@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial de Resultados</title>
+    <!-- Incluir Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center mt-4">Historial de Resultados</h2>
+        <div id="historyList" class="mt-4"></div>
+    </div>
+    <div class="text-center mt-4">
+        <a href="game.html" class="btn btn-primary">Volver al Juego</a>
+    </div>
+
+    <!-- Incluir Firebase y JS -->
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-database-compat.js"></script>
+    <script>
+        // Inicializar Firebase (usa tu configuración aquí)
+        const firebaseConfig = {
+            apiKey: "AIzaSyCvJyyeK8ARXgRYNMhtJqP1CPnVFmKpTG8",
+            authDomain: "juego-del-bac.firebaseapp.com",
+            projectId: "juego-del-bac",
+            storageBucket: "juego-del-bac.appspot.com",
+            messagingSenderId: "587231273517",
+            appId: "1:587231273517:web:48f777505565ee1fd04ea4"
+        };
+        
+        // Inicializar Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        const userName = localStorage.getItem('userName'); // Obtener el nombre del usuario
+        const db = firebase.database();
+
+        // Cargar historial del usuario desde Firebase
+        const historyRef = db.ref(`historial/${userName}`);
+        historyRef.once('value').then(snapshot => {
+            const historyData = snapshot.val();
+            let historyHTML = ''; // Inicializar la variable historyHTML
+
+            if (!historyData) {
+                // Si no hay historial, mostrar un mensaje adecuado
+                document.getElementById('historyList').innerHTML = '<p>No hay historial disponible.</p>';
+                return;
+            }
+        
+            Object.keys(historyData).forEach(attemptKey => {
+                const attempt = historyData[attemptKey];
+                const { date, score, incorrectAnswers } = attempt;
+
+                // Agregar los datos del intento al HTML
+                historyHTML += `
+                    <div class="card mt-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Intento del: ${new Date(date).toLocaleString()}</h5>
+                            <p class="card-text">Puntuación: ${score}</p>
+                            <h6>Preguntas Incorrectas:</h6>
+                            <ul>`;
+        
+                // Verificar si 'incorrectAnswers' es un array antes de usar forEach
+                if (Array.isArray(incorrectAnswers)) {
+                    incorrectAnswers.forEach(item => {
+                        // Mostrar el historial de respuestas incorrectas
+                        historyHTML += `
+                            <li><strong>Pregunta:</strong> ${item.question}<br>
+                                <strong>Tu respuesta:</strong> ${item.yourAnswer}<br>
+                                <strong>Respuesta correcta:</strong> ${item.correctAnswer}</li>
+                        `;
+                    });
+                } else {
+                    // Si no hay respuestas incorrectas o está mal formado
+                    historyHTML += `<p>No hay respuestas incorrectas para este intento.</p>`;
+                }
+
+                historyHTML += `</ul></div></div>`; // Cerrar el card del intento
+            });
+        
+            document.getElementById('historyList').innerHTML = historyHTML;
+        });
+    </script>
+</body>
+</html>

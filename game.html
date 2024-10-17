@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Preguntas Estilo Temple Run</title>
+    <!-- Incluir Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container-fluid d-flex justify-content-end">
+        <button class="btn btn-secondary mr-2" id="downloadQuestions">Descargar PDF de Preguntas</button>
+        <button class="btn btn-secondary" id="downloadAnswers">Descargar Respuestas</button>
+    </div>
+    <!-- Añadir este contenedor para la selección de categoría -->
+    <div class="container text-center" id="categorySelection">
+        <h3>Selecciona la categoría:</h3>
+        <div class="btn-group">
+            
+            <button class="btn btn-primary" id="Temas de clase">Temas de clase</button>
+        </div>
+    </div>
+    
+    
+
+    <div class="container text-center" id="difficultySelection">
+        <h3>Selecciona la dificultad:</h3>
+        
+        <div class="btn-group">
+            <button class="btn btn-primary" id="easy">Fácil</button>
+            <button class="btn btn-primary" id="normal">Normal</button>
+            <button class="btn btn-primary" id="hard">Difícil</button>
+        </div>
+    </div>
+    
+    <div class="container-fluid d-flex justify-content-center" id="gameContainer" style="display: none;">
+        <div id="gameArea" class="bg-light">
+            <div id="question"></div>
+            <div class="option" id="option1"></div>
+            <div class="option" id="option2"></div>
+            <div id="player"></div>
+        </div>
+    </div>
+
+    <div id="statusContainer">
+        <p id="lives">Vidas: </p>
+        <p id="score">Puntuación: 0</p>
+        <button class="btn btn-warning" id="pauseButton">Pausar</button>
+        <button class="btn btn-success" id="resumeButton" style="display: none;">Reanudar</button>
+        
+            <div class="text-center mt-4">
+                <a href="historial.html" class="btn btn-secondary">Ver Historial</a>
+            </div>
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    
+    <!-- Incluir Bootstrap JS y jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Firebase App (base) SDK (compatibility version) -->
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
+    <!-- Firebase Database SDK (compatibility version) -->
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-database-compat.js"></script>
+    <script src="script.js"></script>
+
+
+</body>
+</html>

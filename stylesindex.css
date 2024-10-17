@@ -1,0 +1,29 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+}
+
+.logo {
+    max-width: 100px;
+    margin-bottom: 20px;
+}
+
+.text-bac-red {
+    color: #EE1C25;
+}
+
+.btn-bac-red {
+    background-color: #EE1C25;
+    color: #FFFFFF;
+    border: none;
+}
+
+.btn-bac-red:hover {
+    background-color: #A7A8AA;
+}
+
+.error-message {
+    display: none;
+}

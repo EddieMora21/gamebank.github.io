@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión - BAC</title>
+    <!-- Incluir Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="stylesindex.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="login-box col-12 col-md-6 col-lg-4 p-4 shadow rounded">
+            <img src="logo-small.png" alt="Logo BAC" class="logo img-fluid mb-4">
+            <h2 class="text-center text-bac-red mb-4">Iniciar Sesión</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="name">Nombre de Usuario:</label>
+                    <input type="text" id="name" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-bac-red btn-block">Iniciar Sesión</button>
+            </form>
+            <p id="error-message" class="error-message mt-3 text-danger text-center"></p>
+        </div>
+    </div>
+
+    <!-- Incluir Bootstrap JS y Firebase -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Firebase App (base) SDK (compatibility version) -->
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
+    <!-- Firebase Auth SDK (compatibility version) -->
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-auth-compat.js"></script>
+    <!-- Firebase Database SDK (compatibility version) -->
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-database-compat.js"></script>
+    <script src="scriptusuers.js"></script>
+</body>
+</html>
